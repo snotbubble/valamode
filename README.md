@@ -2,6 +2,8 @@
 
 *work in progress*
 
+![screenie](211124_valamode_screenie.png)
+
 made for a specific project, word lists are far from complete
 
 based on this article:
