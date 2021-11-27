@@ -236,6 +236,7 @@
 				"HeaderBar" 
 				"Label" 
 				"ListBox" 
+				"MenuButton" 
 				"Notebook" 
 				"Paned" 
 				"Popover" 
