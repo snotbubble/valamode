@@ -279,6 +279,7 @@
 				"get_child" 
 				"get_child_at_index" 
 				"get_current_page" 
+				"get_first_child" 
 				"get_index" 
 				"get_row_at_index" 
 				"get_selected_row" 
@@ -306,6 +307,7 @@
 				"set_min_content" 
 				"set_orientation" 
 				"set_row_spacing"
+				"set_selected" 
 				"set_selection_mode"
 				"set_show_border" 
 				"set_size_request" 
@@ -331,6 +333,7 @@
 				"ComboBoxText" 
 				"CssProvider" 
 				"DrawingArea" 
+				"DropDown" 
 				"Entry" 
 				"EventBox"
 				"FlowBox" 
@@ -436,6 +439,8 @@
 				"yellow" 
 			))
 			(x-events '(
+				"activate" 
+				"activated" 
 				"EventMask"
 				"Gesture"
 				"GestureMultiPress"
