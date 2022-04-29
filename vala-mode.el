@@ -217,10 +217,17 @@
 				"Cairo" 
 				"Environment" 
 				"Error" 
+				"EventControllerScroll"
+				"EventControllerZoom"
+				"EventControllerMotion"
+				"GestureDrag"
+				"GestureClick"
+				"GestureZoom"
 				"GLib" 
 				"Gdk" 
 				"Gtk" 
 				"Math" 
+				"Orientation"
 				"Process.spawn_async" 
 				"RGBA" 
 				"application_id"
@@ -246,11 +253,13 @@
 				"date" 
 				"days_between" 
 				"get_day" 
+				"get_monotonic_time"
 				"get_month" 
 				"get_real_time" 
 				"get_weekday" 
 				"get_year" 
-				"month" "year" 
+				"month"
+				"year" 
 				"now" 
 				"now_local" 
 				"precise" 
@@ -267,6 +276,7 @@
 				"weekday" 
 			))
 			(x-viewcmd '(
+				"add_controller"
 				"add_events"
 				"add_provider" 
 				"append"
@@ -278,24 +288,31 @@
 				"get_allocated_width" 
 				"get_child" 
 				"get_child_at_index" 
+				"get_current_button"
 				"get_current_page" 
 				"get_first_child" 
-				"get_index" 
+				"get_index"
+				"get_orientation"
 				"get_row_at_index" 
+				"get_selected"
 				"get_selected_row" 
 				"get_size" 
-				"get_style_context" 
+				"get_style_context"
+				"get_value"
 				"insert" 
 				"load_from_data" 
 				"popdown" 
 				"present" 
-				"qsort_with_data" 
+				"qsort_with_data"
+				"queue_draw"
 				"remove"
 				"set_active" 
 				"set_baseline_row" 
+				"set_button"
 				"set_child" 
 				"set_column_spacing" 
 				"set_default_size"  
+				"set_draw_func"
 				"set_halign" 
 				"set_hexpand" 
 				"set_margin_bottom" 
@@ -304,7 +321,8 @@
 				"set_margin_top" 
 				"set_markup" 
 				"set_max_width_chars" 
-				"set_min_content" 
+				"set_min_content"
+				"set_model"
 				"set_orientation" 
 				"set_row_spacing"
 				"set_selected" 
@@ -454,13 +472,19 @@
 				"close_request" 
 				"connect" 
 				"destroy"
+				"drag_begin"
+				"drag_update"
+				"drag_end"
 				"event" 
+				"motion"
 				"motion_notify" 
+				"notify"
 				"pressed" 
 				"released" 
 				"scroll" 
 				"selected" 
 				"switch_page" 
+				"toggled"
 				"touch" 
 			))
 			(x-drawcmd '(
@@ -514,9 +538,10 @@
 			(,x-logic-regexp . vala-logic-word) 
 			;; hyphenated
 			(,x-datatypes-regexp . vala-datatypes-word)
-			(,x-viewcmd-regexp . vala-viewcmd-word) 
+			(,x-drawcmd-regexp . vala-drawcmd-word) 
+			(,x-drawprp-regexp . vala-drawprp-word) 
 			(,x-viewprp-regexp . vala-viewprp-word) 
-			(,x-events-regexp . vala-events-word)
+			(,x-viewcmd-regexp . vala-viewcmd-word) 
 			;; special exception
 			(,x-comparison-regexp . vala-comparison-word)
 			;; some suffixes or hyphens
@@ -530,11 +555,10 @@
 			(,x-viewobj-regexp . vala-viewobj-word) 
 			(,x-control-regexp . vala-control-word)
 			;; pure
+			(,x-events-regexp . vala-events-word)
 			(,x-series-regexp . vala-series-word) 
 			(,x-constants-regexp . vala-constants-word) 
-			(,x-drawcmd-regexp . vala-drawcmd-word) 
 			(,x-drawobj-regexp . vala-drawobj-word)
-			(,x-drawprp-regexp . vala-drawprp-word) 
 			(,x-modifiers-regexp . vala-modifiers-word)
 			;; note: order above matters, because once colored, that part won't change.
 			;; in general, put longer words first
