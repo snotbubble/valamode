@@ -171,6 +171,7 @@
 				"for" 
 				"foreach" 
 				"if" 
+				"in"
 				"next" 
 				"repeat" 
 				"return" 
@@ -181,9 +182,10 @@
 			))
 			(x-help '("prin" "print" "printf"))
 			(x-logic '("true" "false"))
-			(x-datatypes '("bool" "int" "float" "string" "double" "uint" "void" "class" "null" "char"))
+			(x-datatypes '("bool" "int" "float" "string" "double" "uint" "void" "class" "null" "char" "out"))
 			(x-math '("sqrt" "min" "max" "abs" "floor"))
 			(x-io '(
+				"append_to"
 				"Dir"
 				"File" 
 				"FileCreateFlags"
@@ -193,12 +195,18 @@
 				"build_filename" 
 				"get_current_dir" 
 				"get_path" 
+				"load_contents"
 				"make_directory_with_parents" 
+				"message"
 				"new_for_path" 
 				"open"
+				"Pid"
 				"query_exists" 
 				"read_line" 
 				"read_name"
+				"SpawnError"
+				"SpawnFlags"
+				"spawn_sync"
 				"write" 
 			))
 			(x-series '("length"))
@@ -209,8 +217,11 @@
 				"sizeof" 
 				"split" 
 				"strcmp" 
-				"strip" 
+				"strip"
+				"substring"
 				"trim" 
+				"data"
+				"to_string"
 			))
 			(x-system '(
 				"ApplicationFlags"
@@ -279,10 +290,12 @@
 				"add_controller"
 				"add_events"
 				"add_provider" 
+				"add_titled"
 				"append"
 				"append_page" 
 				"append_text" 
-				"attach" 
+				"attach"
+				"bind_model"
 				"get_active" 
 				"get_allocated_height"
 				"get_allocated_width" 
@@ -290,13 +303,17 @@
 				"get_child_at_index" 
 				"get_current_button"
 				"get_current_page" 
+				"get_default_size"
 				"get_first_child" 
 				"get_index"
+				"get_next_sibling"
 				"get_orientation"
 				"get_row_at_index" 
 				"get_selected"
 				"get_selected_row" 
-				"get_size" 
+				"get_size"
+				"get_start_child"
+				"get_string"
 				"get_style_context"
 				"get_value"
 				"insert" 
@@ -315,6 +332,9 @@
 				"set_draw_func"
 				"set_halign" 
 				"set_hexpand" 
+				"set_highlight_syntax"
+				"set_label"
+				"set_language"
 				"set_margin_bottom" 
 				"set_margin_end"
 				"set_margin_start" 
@@ -323,15 +343,20 @@
 				"set_max_width_chars" 
 				"set_min_content"
 				"set_model"
+				"set_monospace"
 				"set_orientation" 
 				"set_row_spacing"
 				"set_selected" 
 				"set_selection_mode"
 				"set_show_border" 
+				"set_shrink_end_child"
 				"set_size_request" 
+				"set_stack"
+				"set_style_scheme"
 				"set_tab_pos" 
 				"set_title_widget" 
 				"set_titlebar" 
+				"set_transition_type"
 				"set_tooltip" 
 				"set_value" 
 				"set_vexpand" 
@@ -345,7 +370,10 @@
 			(x-viewobj '(
 				"ActionBar" 
 				"Adjustment" 
+				"Application"
+				"ApplicationWindow"
 				"Box" 
+				"Buffer"
 				"Button" 
 				"ComboBox" 
 				"ComboBoxText" 
@@ -356,7 +384,9 @@
 				"EventBox"
 				"FlowBox" 
 				"Grid" 
+				"GtkSource"
 				"HeaderBar" 
+				"LanguageManager"
 				"Label" 
 				"ListBox" 
 				"MenuButton" 
@@ -366,20 +396,38 @@
 				"Scale"
 				"ScrollDirection" 
 				"ScrolledWindow" 
+				"space_drawer"
 				"SpinButton" 
+				"Stack"
+				"StackSwitcher"
+				"StringList"
+				"StyleSchemeManager"
+				"TabArray"
+				"TextTagTable"
 				"ToggleButton" 
-				"ToolButton" 
+				"ToolButton"
+				"View" 
 				"Window" 
 			))
 			(x-viewprp '(
+				"accepts_tab"
+				"active"
 				"adjustment" 
 				"alpha" 
 				"border_width" 
+				"bottom_margin"
+				"buffer"
 				"column_spacing"
+				"enable_matrix"
 				"end_child"
 				"hexpand" 
+				"highlight_current_line"
 				"homogeneous" 
 				"icon_name" 
+				"indent_on_tab" 
+				"indent_width" 
+				"label"
+				"left_margin"
 				"margin" 
 				"margin_bottom" 
 				"margin_end" 
@@ -395,9 +443,14 @@
 				"position" 
 				"resize_end_child" 
 				"resize_start_child" 
+				"right_margin"
 				"row_spacing" 
+				"show_line_numbers"
+				"spacing"
 				"start_child" 
+				"tab_width"
 				"text" 
+				"top_margin"
 				"title" 
 				"value" 
 				"vexpand" 
@@ -509,6 +562,7 @@
 			(x-logic-regexp (regexp-opt x-logic 'words))
 			;; hyphenated words, may contain duplicates
 			(x-datatypes-regexp (regexp-opt x-datatypes 'words))
+			(x-viewcmd-regexp (regexp-opt x-viewcmd 'words))
 			(x-viewprp-regexp (regexp-opt x-viewprp 'words))
 			(x-events-regexp (regexp-opt x-events 'words))
 			;; special exception
@@ -523,7 +577,6 @@
 			(x-viewobj-regexp (regexp-opt x-viewobj 'words))
 			(x-control-regexp (regexp-opt x-control 'words))
 			;; 'pure' words; no hyphens, suffixes etc.
-			(x-viewcmd-regexp (regexp-opt x-viewcmd 'words))
 			(x-datetime-regexp (regexp-opt x-datetime 'words))
 			(x-series-regexp (regexp-opt x-series 'words))
 			(x-constants-regexp (regexp-opt x-constants 'words))
