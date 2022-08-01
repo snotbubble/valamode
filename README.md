@@ -3,8 +3,9 @@
 *work in progress*
 
 ![screenie](211124_valamode_screenie.png)
+![screenie](220801_valamode_screenie.png)
 
-made for a specific project, word lists are far from complete
+made for specific projects, word lists are far from complete
 
 based on this article:
 
