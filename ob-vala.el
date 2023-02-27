@@ -34,6 +34,8 @@
 	(setq blkname (format "%s" (nth 4 (org-babel-get-src-block-info))))
 	(setq tmpfile (org-babel-temp-file (format "%svalatemp_" (file-name-directory buffer-file-name)) ".vala"))
 	(setq par (mapconcat 'identity (org-babel-variable-assignments:vala params) "\n"))
+	(setq flg (alist-get :flags (org-babel-process-params params)))
+	;;(print flg)
 	(with-temp-file tmpfile 
 		(insert 
 			(replace-regexp-in-string "main[\s(]+string[\s\[\]]+ args[\s)]+[\s{]+\n" 
@@ -43,7 +45,7 @@
 		)
 	)
     (org-babel-eval 
-		(format "valac %s -o valatemp && rm %s && ./valatemp" (org-babel-process-file-name tmpfile) (org-babel-process-file-name tmpfile)) 
+		(format "valac %s -o valatemp %s && rm %s && ./valatemp" (org-babel-process-file-name tmpfile) flg (org-babel-process-file-name tmpfile)) 
 		""
 	)
 )
