@@ -1,31 +1,6 @@
 ;; bare minimum vala ob file
 ;; by c.p.brown 2023
-;; do with as you please
-;;
-;; handles string and number (int & float) variables
-;;
-;; get this working by saving it to ~./emacs.d
-;; then add the following indicated lines to ~./.emacs
-;;
-;; ->    (load-file "~/.emacs.d/ob-vala.el")
-;;       (org-babel-do-load-languages 'org-babel-load-languages '(
-;; ->        (vala . t)
-;;       ))
-;;
-;; remove by hosing the indicated lines and deleting the file
-;;
-;; injects vars (aka params here) into the main block:
-;;    ...main(string[] args) {
-;;        varname = """string goes here...""";
-;;        anothervar = 1.0;
-;;
-;; tested OK with 4000 lines of csv in incoming vars,
-;; its as slow as python to do the same thing (probably more checking in vala).
-;; the binary itself is about 3x faster when run in the terminal, so the delay is mostly the compiler.
-;;
-;; TODO:
-;; - check to see if a binary exists and just run it if `compile=false` is set on the block, ignore and compile anyway if the binary doesn't exist. There should also be some way to let me know the binary is out of date if I alter the code.
-
+;; do not use this script, its for my own personal use only
 
 (require 'ob)
 
