@@ -568,53 +568,30 @@
 	)
 )
 
-;; syntax table partly based on rebol.el, made by:
-;;     1998: jrm <bitdiddle@hotmail.com>
-;;     ????: Marcus Petersson <d4marcus@dtek.chalmers.se>
-;;     1999: Jeff Kreis <jeff@rebol.com>
-;;     2001: Sterling Newton <sterling@rebol.com>
-;; http://www.rebol.com/tools/rebol.el
-
 (defconst vala-mode-syntax-table
 	(let 
 		(
 			(table (make-syntax-table))
-			(i 0)
 		)
-		(while 
-			(< i 256)
-			(modify-syntax-entry i "_" table)
-			(setq i (1+ i))
-		)
-		(setq i ?0)
-		(while 
-			(<= i ?9)
-			(modify-syntax-entry i "w" table)
-			(setq i (1+ i))
-		)
-		(setq i ?A)
-		(while 
-			(<= i ?Z)
-			(modify-syntax-entry i "w" table)
-			(setq i (1+ i))
-		)
-		(setq i ?a)
-		(while 
-			(<= i ?z)
-			(modify-syntax-entry i "w" table)
-			(setq i (1+ i))
-		)
+		;(modify-syntax-entry ?\  "_" table)
 		(modify-syntax-entry ?\n ">" table)
+		(modify-syntax-entry ?* ". 23b" table)
+		(modify-syntax-entry ?/ ". 124" table)
+		;; braces
 		(modify-syntax-entry ?\[ "(]" table)
 		(modify-syntax-entry ?\] ")[" table)
 		(modify-syntax-entry ?\( "()" table)
 		(modify-syntax-entry ?\) ")(" table)
 		(modify-syntax-entry ?{ "(}" table)
 		(modify-syntax-entry ?} "){" table)
-		(modify-syntax-entry ?/ ". 124" table)
-		(modify-syntax-entry ?* ". 23b" table)
+		;; string
 		(modify-syntax-entry ?\" "\"" table)
 		(modify-syntax-entry ?\\ "\\" table)
+		;; words
+		(modify-syntax-entry ?_ "w" table)
+		;; not words
+		(modify-syntax-entry ?, "." table)
+		(modify-syntax-entry ?\; "." table)
 		table
 	)
 )
