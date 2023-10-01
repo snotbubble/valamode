@@ -7,7 +7,14 @@
 (defun org-babel-execute:vala (body params)
 	"execute vala code"
 	(setq blkname (format "%s" (nth 4 (org-babel-get-src-block-info))))
-	(setq tmpfile (org-babel-temp-file (format "%svalatemp_" (file-name-directory buffer-file-name)) ".vala"))
+	;;(setq tmpfile (org-babel-temp-file (format "%svalatemp_" (file-name-directory buffer-file-name)) ".vala"))
+	(setq tmpfile 
+		(format 
+			"%svalatemp_%s.vala" 
+			(file-name-directory buffer-file-name) 
+			(org-element-property :title (org-element-at-point))
+		)
+	)
 	(setq par (mapconcat 'identity (org-babel-variable-assignments:vala params) "\n"))
 	(setq flg (alist-get :flags (org-babel-process-params params)))
 	(if (not flg) (setq flg "") ())
