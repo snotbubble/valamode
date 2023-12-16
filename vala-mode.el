@@ -97,19 +97,22 @@
 		"null"
 		"out"
 		"string"
+		"struct"
 		"uint"
 		"uint8"
 		"void"
 	)
 )
-(defconst vala-math-words '("sqrt" "min" "max" "abs" "floor"))
+(defconst vala-math-words '("sqrt" "min" "max" "abs" "floor" "ceil"))
 (defconst vala-io-words 
 	'(
 		"Dir" 
 		"File" 
 		"FileCreateFlags" 
 		"FileOutputStream" 
+		"FileQueryInfoFlags" 
 		"FileStream" 
+		"FileType" 
 		"Path" 
 		"Pid" 
 		"SpawnError" 
@@ -117,7 +120,9 @@
 		"append_to" 
 		"build_filename" 
 		"delete" 
+		"get_basename" 
 		"get_current_dir" 
+		"get_dirname" 
 		"get_path" 
 		"load_contents" 
 		"make_directory_with_parents" 
@@ -132,30 +137,108 @@
 		"write" 
 	)
 )
-(defconst vala-series-words '("length"))
+(defconst vala-series-words '("join" "joinv" "length" "resize"))
 (defconst vala-specialstring-words 
 	'(
-		"compress" 
-		"concat" 
+		"@get"
+		"_chomp"
+		"_chug"
+		"_delimit"
+		"_strip"
+		"ascii_casecmp"
+		"ascii_down"
+		"ascii_ncasecmp"
+		"ascii_up"
+		"canon"
+		"casefold"
+		"char_count"
+		"chomp"
+		"chr"
+		"chug"
+		"collate"
+		"collate_key"
+		"collate_key_for_filename"
+		"compress"
+		"concat"
 		"contains" 
 		"data" 
-		"escape" 
-		"get_char" 
-		"hash" 
+		"delimit"
+		"down"
+		"dup"
+		"escape"
+		"first_index_of"
+		"get_char"
+		"get_char_validated"
+		"get_next_char"
+		"get_prev_char"
+		"has_prefix"
+		"has_suffix"
+		"hash"
+		"index_of"
+		"index_of_char"
+		"index_of_nth_char"
+		"is_ascii"
+		"isdigit"
+		"join"
+		"last_index_of"
+		"last_index_of_char"
+		"len"
+		"locale_to_utf8"
+		"make_valid"
+		"match_string"
+		"ndup"
+		"next_char"
+		"nfill"
+		"normalize"
+		"offset"
+		"pointer_to_offset"
+		"prev_char"
+		"rchr"
 		"replace" 
+		"reverse"
+		"rstr"
+		"rstr_len"
+		"scanf"
+		"set_str"
+		"size"
 		"sizeof" 
+		"skip"
+		"slice"
+		"splice"
 		"split" 
+		"split_set"
+		"str"
 		"strcmp" 
-		"strip" 
+		"strip"
 		"substring" 
-		"to_string" 
+		"to_ascii"
+		"to_bool"
+		"to_double"
+		"to_int"
+		"to_int64"
+		"to_long"
+		"to_string"
+		"to_uint64"
+		"to_ulong"
+		"to_utf16"
+		"to_utf32"
+		"to_utf32_fast"
+		"to_utf8"
+		"tokenize_and_fold"
 		"trim" 
+		"up"
+		"utf8_offset"
+		"valid_char"
+		"validate"
+		"validate_len"
+		"vprintf"
 	)
 )
 (defconst vala-system-words 
 	'(
 		"ApplicationFlags" 
 		"Cairo" 
+		"Display" 
 		"Environment" 
 		"Error" 
 		"EventControllerMotion" 
@@ -239,18 +322,21 @@
 		"get_active" 
 		"get_allocated_height" 
 		"get_allocated_width" 
+		"get_ancestor" 
 		"get_child" 
 		"get_child_at_index" 
 		"get_current_button" 
 		"get_current_page" 
 		"get_default_size" 
 		"get_first_child" 
+		"get_gutter" 
 		"get_index" 
 		"get_language" 
 		"get_last_child" 
 		"get_line_count"                     
 		"get_next_sibling" 
 		"get_orientation" 
+		"get_preferred_size" 
 		"get_row_at_index" 
 		"get_scheme" 
 		"get_selected" 
@@ -263,6 +349,7 @@
 		"insert" 
 		"insert_before" 
 		"load_from_data" 
+		"load_from_string" 
 		"popdown" 
 		"present" 
 		"qsort_with_data" 
@@ -275,11 +362,13 @@
 		"set_button" 
 		"set_child" 
 		"set_column_spacing" 
+		"set_css_classes" 
 		"set_default_size" 
 		"set_draw_func" 
 		"set_halign" 
 		"set_hexpand" 
 		"set_highlight_syntax" 
+		"set_icon_name" 
 		"set_label" 
 		"set_language" 
 		"set_margin_bottom" 
@@ -320,6 +409,7 @@
 		"show_all" 
 		"show_close_button" 
 		"show_title_buttons" 
+		"typeof" 
 	)
 )
 (defconst vala-gtkobj-words 
@@ -341,6 +431,7 @@
 		"FlowBox" 
 		"Grid" 
 		"GtkSource" 
+		"Gutter" 
 		"HeaderBar" 
 		"Label" 
 		"LanguageManager" 
@@ -351,6 +442,7 @@
 		"Paned" 
 		"Picture" 
 		"Popover" 
+		"Requisition" 
 		"Scale" 
 		"ScrollDirection" 
 		"ScrolledWindow" 
@@ -384,6 +476,7 @@
 		"buffer" 
 		"can_shrink" 
 		"column_spacing" 
+		"css_classes" 
 		"default_width" 
 		"default_height" 
 		"enable_matrix" 
@@ -430,6 +523,7 @@
 		"visible" 
 		"wide_handle" 
 		"width_request" 
+		"with_buffer" 
 		"with_entry" 
 		"with_label" 
 		"with_range" 
@@ -449,12 +543,14 @@
 		"BUTTON_PRESS_MASK" 
 		"BUTTON_RELEASE_MASK" 
 		"CAPTURE" 
+		"DIRECTORY" 
 		"DOWN" 
 		"END" 
 		"FLAGS_NONE" 
 		"FRIDAY" 
 		"HORIZONTAL" 
 		"MONDAY" 
+		"NONE" 
 		"NORMAL" 
 		"POINTER_MOTION_MASK" 
 		"PRELIGHT" 
@@ -497,6 +593,7 @@
 		"activated" 
 		"activated" 
 		"activated" 
+		"begin" 
 		"button_press" 
 		"button_press_event" 
 		"button_release" 
@@ -508,6 +605,7 @@
 		"drag_begin" 
 		"drag_end" 
 		"drag_update" 
+		"end" 
 		"event" 
 		"motion" 
 		"motion_notify" 
@@ -519,6 +617,7 @@
 		"switch_page" 
 		"toggled" 
 		"touch" 
+		"update" 
 	)
 )
 (defconst vala-cairocmd-words 
@@ -540,7 +639,7 @@
 )
 (defconst vala-cairoobj-words '("rectangle" "line" "arc"))
 (defconst vala-cairoprop-words '("TextExtents" "FontSlant" "FontWeight" "height" "text_extents" "LineCap" "width"))
-(defconst vala-modifier-words '("parse" "to_string"))
+(defconst vala-modifier-words '("parse" "to_string" "try_parse"))
 
 (defconst vala-font-lock-keywords
 	(list
@@ -582,8 +681,8 @@
 		(modify-syntax-entry ?\] ")[" table)
 		(modify-syntax-entry ?\( "()" table)
 		(modify-syntax-entry ?\) ")(" table)
-		(modify-syntax-entry ?{ "(}" table)
-		(modify-syntax-entry ?} "){" table)
+		(modify-syntax-entry ?\{ "(}" table)
+		(modify-syntax-entry ?\} "){" table)
 		;; string
 		(modify-syntax-entry ?\" "\"" table)
 		(modify-syntax-entry ?\\ "\\" table)
@@ -592,6 +691,9 @@
 		;; not words
 		(modify-syntax-entry ?, "." table)
 		(modify-syntax-entry ?\; "." table)
+		;; doesn't work
+		(modify-syntax-entry ?> "." table)
+		(modify-syntax-entry ?< "." table)
 		table
 	)
 )
