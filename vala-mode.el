@@ -1,7 +1,7 @@
 ;;; vala-mode.el
 
 ;; mode for Vala: https://vala.dev
-;; by c.p.brown 2022~2023
+;; by c.p.brown 2022~2024
 ;; acknowledgments above relevant code below
 ;;
 ;; do not use this mode, it is a derrived work for my own use,
